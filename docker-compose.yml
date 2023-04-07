@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  mockserver:
+    image: mockserver/mockserver:5.13.2
+    container_name: mockserver
+    hostname: mockserver
+    ports:
+      - 1080:1080
+    environment:
+      MOCKSERVER_ENABLE_CORS_FOR_API: "true"
+      MOCKSERVER_ENABLE_CORS_FOR_ALL_RESPONSES: "true"
+    networks:
+      - mockserver
+
+  mockserverselftest:
+    image: curlimages/curl
+    container_name: mockserverselftest
+    entrypoint: sh -c "until curl --location --request PUT 'http://mockserver:1080/status' | grep 1080; do echo .; sleep 1; done;"
+    networks:
+      - mockserver
+
+networks:
+  mockserver:
+
+    # docker-compose up -d
+    # docker-compose down

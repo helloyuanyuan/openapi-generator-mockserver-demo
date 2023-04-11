@@ -205,19 +205,16 @@
             </goals>
             <configuration>
               <inputSpec>https://petstore.swagger.io/v2/swagger.json</inputSpec>
-              <!-- <inputSpec>${project.basedir}/src/main/resources/api/petstore.yaml</inputSpec> -->
               <generatorName>java</generatorName>
               <apiPackage>com.example.demo.api</apiPackage>
               <modelPackage>com.example.demo.model</modelPackage>
-              <skipOverwrite>true</skipOverwrite>
-              <generateApis>false</generateApis>
-              <generateApiTests>false</generateApiTests>
+              <generateApis>true</generateApis>
+              <generateApiTests>true</generateApiTests>
               <generateApiDocumentation>true</generateApiDocumentation>
               <generateModels>true</generateModels>
               <generateModelTests>false</generateModelTests>
               <generateModelDocumentation>true</generateModelDocumentation>
               <generateSupportingFiles>true</generateSupportingFiles>
-              <supportingFilesToGenerate>JSON.java</supportingFilesToGenerate>
             </configuration>
           </execution>
         </executions>

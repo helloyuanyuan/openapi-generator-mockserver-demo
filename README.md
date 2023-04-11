@@ -38,9 +38,9 @@
 0. Defines api contract (Whole Team - Dev, QA, BA…);
 1. Developer adds openapi annotation in dev project code;
 2. Developer genarates online openapi document;
-3. Testers genaretes defined object from online openapi document;
-4. Testers writes mock server expecations accroding to openapi document;
-5. Testers writes mock server testcases accroding to openapi document;
+3. Tester genaretes defined object from online openapi document;
+4. Tester writes mock server expecations accroding to openapi document;
+5. Tester writes mock server testcases accroding to openapi document;
 6. API Test - send request to mock server to get expected return;
 7. UI test - point front side to use mock server;
 8. UI test - selenium UI automation;

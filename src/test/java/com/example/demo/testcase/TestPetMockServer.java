@@ -15,10 +15,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-@DisplayName("TestGetPetById")
+@DisplayName("TestPetMockServer")
 @Duration
 @ExtendWith(GetPetById.class)
-class TestGetPetById extends MockServerTestBase implements LifecycleLogger {
+class TestPetMockServer extends MockServerTestBase implements LifecycleLogger {
 
   private final String API_PATH = MOCK_SERVER_URL + "/pet/{petId}";
 

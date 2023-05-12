@@ -25,7 +25,7 @@
 - Run test and generates test report:
 
   ~~~Text
-  ./mvnw clean compile test allure:serve
+  ./mvnw clean compile test -Dmaven.test.failure.ignore=true allure:serve
   ~~~
 
 ### Mock Server Dashboard

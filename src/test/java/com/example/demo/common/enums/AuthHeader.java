@@ -34,6 +34,11 @@ public enum AuthHeader {
       return new Header("Authorization", "Bearer " + HttpStatusCode.NOT_FOUND_404);
     }
   },
+  METHOD_NOT_ALLOWED_405 {
+    public Header header() {
+      return new Header("Authorization", "Bearer " + HttpStatusCode.METHOD_NOT_ALLOWED_405);
+    }
+  },
   INTERNAL_SERVER_ERROR_500 {
     public Header header() {
       return new Header("Authorization", "Bearer " + HttpStatusCode.INTERNAL_SERVER_ERROR_500);

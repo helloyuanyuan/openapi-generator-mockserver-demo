@@ -234,7 +234,8 @@
               <goal>generate</goal>
             </goals>
             <configuration>
-              <inputSpec>https://petstore.swagger.io/v2/swagger.json</inputSpec>
+              <!-- <inputSpec>https://petstore.swagger.io/v2/swagger.json</inputSpec> -->
+              <inputSpec>${project.basedir}/src/test/resources/apistub/petstore.json</inputSpec>
               <generatorName>java</generatorName>
               <apiPackage>com.example.demo.api</apiPackage>
               <modelPackage>com.example.demo.model</modelPackage>

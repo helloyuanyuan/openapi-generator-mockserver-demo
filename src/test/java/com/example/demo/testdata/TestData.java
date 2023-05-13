@@ -9,13 +9,13 @@ import com.example.demo.model.ModelApiResponse;
 import com.example.demo.model.Pet;
 import com.example.demo.model.Pet.StatusEnum;
 import com.example.demo.model.Tag;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+
 import io.restassured.http.ContentType;
 
 public class TestData extends MockServerTestBase {
 
-  private static final String API_PATH = OPEN_API_URL_V2 + "/pet";
+  private static final String API_PATH = SERVER_URL + "/pet";
 
   public static Category getCategory() {
     Category category = new Category();
@@ -42,31 +42,22 @@ public class TestData extends MockServerTestBase {
     return pet;
   }
 
-  public static String getPetJsonString(StatusEnum status) throws Exception {
-    ObjectMapper mapper = new ObjectMapper();
-    String petJsonString = mapper.writeValueAsString(getPet(status));
-    petJsonString =
-        petJsonString.replace(status.getValue().toUpperCase(), status.getValue().toLowerCase());
-    return petJsonString;
-  }
-
   public static Pet getPetDefault() throws Exception {
-    Pet pet =
-        given()
-            .log()
-            .all()
-            .contentType(ContentType.JSON)
-            .accept(ContentType.JSON)
-            .header(AuthHeader.OK_200.header())
-            .body(getPet(StatusEnum.AVAILABLE))
-            .then()
-            .log()
-            .all()
-            .expect()
-            .statusCode(200)
-            .when()
-            .post(API_PATH)
-            .as(Pet.class);
+    Pet pet = given()
+        .log()
+        .all()
+        .contentType(ContentType.JSON)
+        .accept(ContentType.JSON)
+        .header(AuthHeader.OK_200.header())
+        .body(getPet(StatusEnum.AVAILABLE))
+        .then()
+        .log()
+        .all()
+        .expect()
+        .statusCode(200)
+        .when()
+        .post(API_PATH)
+        .as(Pet.class);
     return pet;
   }
 

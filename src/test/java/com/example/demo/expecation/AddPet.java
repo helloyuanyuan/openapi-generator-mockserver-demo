@@ -2,9 +2,9 @@ package com.example.demo.expecation;
 
 import static com.example.demo.testdata.TestData.getModelApiResponse;
 import static com.example.demo.testdata.TestData.getPet;
+import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.notFoundResponse;
 import static org.mockserver.model.HttpResponse.response;
-import static org.mockserver.model.HttpRequest.request;
 
 import com.example.demo.MockServerTestBase;
 import com.example.demo.model.Pet.StatusEnum;
@@ -18,9 +18,7 @@ public class AddPet extends MockServerTestBase implements BeforeTestExecutionCal
   public void beforeTestExecution(ExtensionContext context) throws Exception {
     resetMockServer();
     CLIENT
-        .when(request()
-        .withMethod("POST")
-        .withPath("/pet"))
+        .when(request().withMethod("POST").withPath("/pet"))
         .respond(
             httpRequest -> {
               if (httpRequest

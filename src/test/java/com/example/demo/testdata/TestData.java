@@ -10,7 +10,6 @@ import com.example.demo.model.Pet;
 import com.example.demo.model.Pet.StatusEnum;
 import com.example.demo.model.Tag;
 import com.google.common.collect.Lists;
-
 import io.restassured.http.ContentType;
 
 public class TestData extends MockServerTestBase {
@@ -43,21 +42,22 @@ public class TestData extends MockServerTestBase {
   }
 
   public static Pet getPetDefault() throws Exception {
-    Pet pet = given()
-        .log()
-        .all()
-        .contentType(ContentType.JSON)
-        .accept(ContentType.JSON)
-        .header(AuthHeader.OK_200.header())
-        .body(getPet(StatusEnum.AVAILABLE))
-        .then()
-        .log()
-        .all()
-        .expect()
-        .statusCode(200)
-        .when()
-        .post(API_PATH)
-        .as(Pet.class);
+    Pet pet =
+        given()
+            .log()
+            .all()
+            .contentType(ContentType.JSON)
+            .accept(ContentType.JSON)
+            .header(AuthHeader.OK_200.header())
+            .body(getPet(StatusEnum.AVAILABLE))
+            .then()
+            .log()
+            .all()
+            .expect()
+            .statusCode(200)
+            .when()
+            .post(API_PATH)
+            .as(Pet.class);
     return pet;
   }
 

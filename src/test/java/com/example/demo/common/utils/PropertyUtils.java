@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -52,5 +51,4 @@ public class PropertyUtils {
   public String getProperty(String key) {
     return properties.getProperty(key);
   }
-
 }

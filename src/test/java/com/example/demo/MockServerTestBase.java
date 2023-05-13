@@ -5,18 +5,15 @@ import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 import static org.mockserver.model.OpenAPIDefinition.openAPI;
 
+import com.example.demo.common.utils.PropertyUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.restassured.http.ContentType;
 import java.util.Map;
-
 import org.mockserver.client.MockServerClient;
 import org.mockserver.model.ClearType;
 import org.mockserver.model.Header;
 import org.mockserver.verify.VerificationTimes;
-
-import com.example.demo.common.utils.PropertyUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import io.restassured.http.ContentType;
 
 public class MockServerTestBase {
 
@@ -24,9 +21,10 @@ public class MockServerTestBase {
 
   protected static final String SERVER_URL = PropertyUtils.getInstance().getProperty("serverurl");
 
-  protected static final MockServerClient CLIENT = new MockServerClient(
-      PropertyUtils.getInstance().getProperty("mockserverhost"),
-      Integer.parseInt(PropertyUtils.getInstance().getProperty("mockserverport")));
+  protected static final MockServerClient CLIENT =
+      new MockServerClient(
+          PropertyUtils.getInstance().getProperty("mockserverhost"),
+          Integer.parseInt(PropertyUtils.getInstance().getProperty("mockserverport")));
 
   protected static final String AUTH_HEADER = "Authorization";
 
